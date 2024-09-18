@@ -1,0 +1,34 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### R Analysis Outline for BIOL7263 Project
+
+#### Analyses of geographic distance and genetic distance from Illumina ddradseq data processed in STACKS
+
+A correlation analysis - Mantel's test
+A spatial autocorrelation analysis - Moran's I
+A visualization of the distribution - Genetic Distance Distribution Analysis
+
+
+### Outline of steps to take
+- Read and Prepare Data:
+  - use vcfR to extract data from "populations.snps.vcf" (STACKS - populations output)
+    - best genetic distance to use?
+  - use readxl to read geographic coordinates from an Excel file.
+  - use geosphere to compute geographic distances from geo. cords
+
+- Moran's I 
+  - use spdep to determine if spatial autocorrelation exists
+  - Ho: no spatial autocorrelation present. 
+    - Expect spatial autocorr. because cliff swallows cluster around water 
+
+- Mantel Test
+  - use vegan to determine if correlation exists between genetic and geographic distances
+  - Ho: No isolation by distance
+    - Expect no isolation by distance as wasn't present with mitochondrial analysis & Fst suggests panmixia
+
+- Genetic Distance Distribution Analysis:
+  - use ggplot2 to plot genetic distance vs. geographic distance
+  - Colonies isolated geographically and those not used in a year may have reduced gene flow
+    - I'd like to plot Fis as well as
