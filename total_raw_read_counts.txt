@@ -1,0 +1,48 @@
+Total Sequences                 181338300  
+Failed Illumina filtered reads  0          0.0%   
+Barcode Not Found               493396     0.3%   
+Low Quality                     14000744   7.7%   
+RAD Cutsite Not Found           678089     0.4%   
+Retained Reads                  166166071  91.6%  
+Total Sequences                 157682193  
+Failed Illumina filtered reads  0          0.0%   
+Barcode Not Found               416559     0.3%   
+Low Quality                     12219500   7.7%   
+RAD Cutsite Not Found           705605     0.4%   
+Retained Reads                  144340529  91.5%  
+Total Sequences                 95092528  
+Failed Illumina filtered reads  0         0.0%   
+Barcode Not Found               258180    0.3%   
+Low Quality                     7889406   8.3%   
+RAD Cutsite Not Found           629126    0.7%   
+Retained Reads                  86315816  90.8%  
+Total Sequences                 139999118  
+Failed Illumina filtered reads  0          0.0%   
+Barcode Not Found               418207     0.3%   
+Low Quality                     13625244   9.7%   
+RAD Cutsite Not Found           804014     0.6%   
+Retained Reads                  125151653  89.4%  
+Total Sequences                 149395451  
+Failed Illumina filtered reads  0          0.0%   
+Barcode Not Found               432913     0.3%   
+Low Quality                     14205731   9.5%   
+RAD Cutsite Not Found           857202     0.6%   
+Retained Reads                  133899605  89.6%  
+Total Sequences                 124507127  
+Failed Illumina filtered reads  0          0.0%   
+Barcode Not Found               380504     0.3%   
+Low Quality                     12219049   9.8%   
+RAD Cutsite Not Found           837391     0.7%   
+Retained Reads                  111070183  89.2%  
+Total Sequences                 144382253  
+Failed Illumina filtered reads  0          0.0%   
+Barcode Not Found               372116     0.3%   
+Low Quality                     8480984    5.9%   
+RAD Cutsite Not Found           2369832    1.6%   
+Retained Reads                  133159321  92.2%  
+Total Sequences                 165341151  
+Failed Illumina filtered reads  0          0.0%   
+Barcode Not Found               38026656   23.0%  
+Low Quality                     6882360    4.2%   
+RAD Cutsite Not Found           1318832    0.8%   
+Retained Reads                  119113303  72.0%  
