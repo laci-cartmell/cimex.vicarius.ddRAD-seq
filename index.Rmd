@@ -1,0 +1,47 @@
+---
+title: "BIOL7263-03 Project"
+author: "Laci Cartmell"
+date: "2024-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Project Outline for BIOL7263-03: Genome Biology
+
+## Integerated Alignment of Single-end Reads from Illumina with STACKS V2.65
+
+# Background
+The generation of single-end reads can result in thousands of snps for population genetic sequencing. This project aims to align single read sequences in order to generate snps for info on genetic distance . I want to see if the swallow bugs are isolate by distance and if there is a correlation between genetic and geographic distance. 
+
+# Data
+The sequencing files were generated between 2020 and 2023? using a ddrad-seq library prep method.There are 7/8 sequencing files that contain XX total swallow bug individuals. They are from 2014 and 2021 field-collected bugs. The barcode files list the samples within each sequencing file. 
+
+# What you need for replicating this
+
+# Outline of Tasks 
+- Quality control
+- Trimming and Demultilexing
+- de novo
+- reference 
+
+
+## Info Details
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
