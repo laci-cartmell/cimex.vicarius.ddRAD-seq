@@ -356,42 +356,65 @@ display: none;
 </div>
 
 
-<div id="project-outline-for-biol7263-03-genome-biology" class="section level3">
-<h3>Project Outline for BIOL7263-03: Genome Biology</h3>
+<div id="quick-note-this-repo-is-used-in-conjuctiong-with-a-project-for-biol7263-03-genome-biology.-all-necessary-files-to-run-the-full-script-are-included-in-the-requiredfiles-however-the-sequence-files-are-stored-in-a-google-drive-due-to-space-limmitations.-please-contact-me-for-access-to-the-link.-p.s.-dr.-toomey-i-shouldve-emailed-you-it-already." class="section level5">
+<h5>Quick Note: This Repo is used in conjuctiong with a project for
+BIOL7263-03: Genome Biology. All necessary files to run the full script
+are included in the RequiredFiles; however, the sequence files are
+stored in a google drive due to space limmitations. Please contact me
+for access to the link. (P.S. Dr. Toomey, I should’ve emailed you it
+already).</h5>
 </div>
-<div id="integerated-alignment-of-single-end-reads-from-illumina-with-stacks-v2.65" class="section level2">
-<h2>Integerated Alignment of Single-end Reads from Illumina with STACKS
-V2.65</h2>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p>This project generated single read sequences using ddRAD-seq on
+genomic dna from swallow bugs (Cimex vicarius). In order to detect
+potential isolation by distance. C. vicarius primarily parasitize cliff
+swallows which are highly colonial. The goal for the class is to
+generate genetic distance and geographic distance between colonies in
+2014 &amp; 2021 My hypothesis that swallow bugs will not exhibit
+isolation by distance as the cliff swallows move frequently between
+colonies. However, a previous mitochondrial genetic study found that the
+genetic diversity of swallow bugs from cliff swallow colony sites were
+negatively associated with distance from ancestral cliffs (Moore,
+2016)</p>
 </div>
-<div id="background" class="section level1">
-<h1>Background</h1>
-<p>The generation of single-end reads can result in thousands of snps
-for population genetic sequencing. This project aims to align single
-read sequences in order to generate snps for info on genetic distance .
-I want to see if the swallow bugs are isolate by distance and if there
-is a correlation between genetic and geographic distance.</p>
+<div id="sequence-generation" class="section level2">
+<h2>Sequence Generation</h2>
+<p>Ten swallow bugs were sequenced from 23 and 14 cliff swallow colonies
+from 2014 and 2021, respectively. The raw sequencing files were
+generated with a double-digest restriction-associated sequencing
+(ddRAD-seq) library preparation based on Peterson et al. (2012).
+Single-read sequences were generated using Illumina HiSeq 4000. There
+are 8 raw sequence files that contains ~48 individuals per file. The
+files are stored on a google drive folder which may be accessed via
+email.</p>
 </div>
-<div id="data" class="section level1">
-<h1>Data</h1>
-<p>The sequencing files were generated between 2020 and 2023? using a
-ddrad-seq library prep method.There are 7/8 sequencing files that
-contain XX total swallow bug individuals. They are from 2014 and 2021
-field-collected bugs. The barcode files list the samples within each
-sequencing file.</p>
-</div>
-<div id="what-you-need-for-replicating-this" class="section level1">
-<h1>What you need for replicating this</h1>
-</div>
-<div id="outline-of-tasks" class="section level1">
-<h1>Outline of Tasks</h1>
+<div id="post-sequencing-tasks" class="section level2">
+<h2>Post-sequencing Tasks</h2>
 <ul>
-<li>Quality control</li>
-<li>Trimming and Demultilexing</li>
-<li>de novo</li>
-<li>reference</li>
+<li>Quality control with FastQC and MultiQC</li>
+<li>Trimming and Demultilexing - process_radtags</li>
+<li>Alignment of reads - Integrated method with Stacks v2.65</li>
+<li>Post-Alignment
+<ul>
+<li>check alignment quality</li>
+<li>genepop –&gt; Fst</li>
+<li>geographic distance</li>
+</ul></li>
 </ul>
-<div id="info-details" class="section level2">
-<h2>Info Details</h2>
+</div>
+<div id="from-the-populations-in-stacks---it-generates-a-genepop-file" class="section level2">
+<h2>From the populations in stacks - it generates a genepop file</h2>
+<p>Genepop files are made up pf —. and —. It was first made to help with
+the massive amounts of data in the Humane Genome Project! So it is built
+to contain a lot of information in a succinct space. Another benefit is
+that it is a common enough file to have R Packages built to handle
+.genpop files. However, I decided to work with Adgenet for generating
+population statistics, and for that reason I converted Genepop to a
+genid object class</p>
+</div>
+<div id="details" class="section level2">
+<h2>Details</h2>
 <p>When you click the <strong>Knit</strong> button a document will be
 generated that includes both content as well as the output of any
 embedded R code chunks within the document. You can embed an R code
@@ -412,7 +435,6 @@ chunk like this:</p>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the
 code chunk to prevent printing of the R code that generated the
 plot.</p>
-</div>
 </div>
 
 

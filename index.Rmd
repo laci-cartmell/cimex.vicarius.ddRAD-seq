@@ -9,26 +9,34 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Project Outline for BIOL7263-03: Genome Biology
-
-## Integerated Alignment of Single-end Reads from Illumina with STACKS V2.65
-
-# Background
-The generation of single-end reads can result in thousands of snps for population genetic sequencing. This project aims to align single read sequences in order to generate snps for info on genetic distance . I want to see if the swallow bugs are isolate by distance and if there is a correlation between genetic and geographic distance. 
-
-# Data
-The sequencing files were generated between 2020 and 2023? using a ddrad-seq library prep method.There are 7/8 sequencing files that contain XX total swallow bug individuals. They are from 2014 and 2021 field-collected bugs. The barcode files list the samples within each sequencing file. 
-
-# What you need for replicating this
-
-# Outline of Tasks 
-- Quality control
-- Trimming and Demultilexing
-- de novo
-- reference 
+##### Quick Note: This Repo is used in conjuctiong with a project for BIOL7263-03: Genome Biology. All necessary files to run the full script are included in the RequiredFiles; however, the sequence files are stored in a google drive due to space limmitations. Please contact me for access to the link. (P.S. Dr. Toomey, I should've emailed you it already). 
 
 
-## Info Details
+## Background
+This project generated single read sequences using ddRAD-seq on genomic dna from swallow bugs (Cimex vicarius). In order to detect potential isolation by distance.
+C. vicarius primarily parasitize cliff swallows which are highly colonial. 
+The goal for the class is to generate genetic distance and geographic distance between colonies in 2014 & 2021  My hypothesis that swallow bugs will not exhibit isolation by distance as the cliff swallows move frequently between colonies. However, a previous mitochondrial genetic study found that the genetic diversity of swallow bugs from cliff swallow colony sites were negatively associated with distance from ancestral cliffs (Moore, 2016)
+
+
+## Sequence Generation
+Ten swallow bugs were sequenced from 23 and 14 cliff swallow colonies from 2014 and 2021, respectively. 
+The raw sequencing files were generated with a double-digest restriction-associated sequencing (ddRAD-seq) library preparation based on Peterson et al. (2012). Single-read sequences were generated using Illumina HiSeq 4000. There are 8 raw sequence files that contains ~48 individuals per file. The files are stored on a google drive folder which may be accessed via email. 
+ 
+
+## Post-sequencing Tasks 
+- Quality control with FastQC and MultiQC
+- Trimming and Demultilexing - process_radtags
+- Alignment of reads - Integrated method with Stacks v2.65
+- Post-Alignment 
+  - check alignment quality
+  - genepop --> Fst
+  - geographic distance
+
+## From the populations in stacks - it generates a genepop file 
+
+Genepop files are made up pf ---. and ---. It was first made to help with the massive amounts of data in the Humane Genome Project! So it is built to contain a lot of information in a succinct space. Another benefit is that it is a common enough file to have R Packages built to handle .genpop files. However, I decided to work with Adgenet for generating population statistics, and for that reason I converted Genepop to a genid object class
+
+## Details
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
