@@ -24,5 +24,4 @@ module load Stacks/2.65-foss-2023a
 cstacks -P ./stacks_2014/ -M /scratch/lcartmell/popmap/catalog_1mil_2014.txt -n 4
 
 # 68 samples in 18 hours
-# maybe use the popmap with 80% of smaples????
 # options for individually adding samples to catalog and for modifying catalog vs other samples gaps

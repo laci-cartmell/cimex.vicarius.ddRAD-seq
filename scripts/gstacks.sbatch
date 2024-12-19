@@ -22,7 +22,6 @@
 #load packages
 module load Stacks/2.65-foss-2023a
 
-
 #gstacks for single-end denovo
 #gstacks -P ./stacks_2014/ -M ./popmap/popmap_2014.txt -O ./stacks_2014/
 
@@ -31,5 +30,3 @@ mkdir stacks_2014/integrated_2/
 gstacks -B ./stacks_2014/ -O ./stacks_2014/integrated_2
 #input dir must have *.matches.bam files
 
-#touch dist_name
-#stacks-dist-extract ./stacks_2014/gstacks.log.distribs dist_name

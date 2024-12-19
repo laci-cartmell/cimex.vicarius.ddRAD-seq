@@ -19,18 +19,5 @@
 #load packages
 module load Stacks/2.65-foss-2023a
 
-#file for array
-#FILENAME=$(sed -n ${SLURM_ARRAY_TASK_ID}p popmaps/popmap_all_integer.txt | cut -f1)
-
-#echo file name is: ${FILENAME}
-
 #run sstacks
 sstacks -P ./stacks_2014/ -M ./popmap/popmap_2014.txt 
-
-#sstacks -c ./denovo_nt -s ./denovo_nt/${FILENAME} -o ./denovo_nt
-
-
-
-
-#run ustacks with M=2, m=3, n=2
-#ustacks -f ./denovo_nt/process_radtags/${FILENAME}.fq.gz -t gzfastq -o ./denovo_nt -i ${SLURM_ARRAY_TASK_ID} -M 3 -m 3 -N 4 --force-diff-len

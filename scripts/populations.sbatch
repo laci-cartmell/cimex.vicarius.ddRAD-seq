@@ -38,4 +38,3 @@ OUTPUT=./hwe_blacklist/
 #run pop w/blacklist, hwe, single-snp
 populations -P $FILES -M $POPMAP -O $OUTPUT --blacklist ./blacklist.txt --max-obs-het 0.5 --min-samples-per-pop 0.7 --min-mac 3 --write-random-snp --structure --genepop --vcf --fstats --hwe --vcf --ordered-export --smooth
 
-# --min-samples-per-pop 0.5 --min-populations 9 --min-maf .03 --write-random-snp --hwe --plink --fstats --genepop --vcf --ordered-export --smooth

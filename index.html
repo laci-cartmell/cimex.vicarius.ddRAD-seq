@@ -351,7 +351,6 @@ display: none;
 
 <h1 class="title toc-ignore">BIOL7263-03 Project</h1>
 <h4 class="author">Laci Cartmell</h4>
-<h4 class="date">2024-12</h4>
 
 </div>
 
@@ -406,7 +405,7 @@ figures using MultiQC on the browswer.</p>
 <ul>
 <li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/tree/main/fastqc">fastqc
 output files</a></li>
-<li><a href="https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sh">fastqc.sh</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/fastqcloop.sbatch">fastqc.sbatch</a></li>
 </ul>
 </div>
 <div id="trimming-and-demultiplexing" class="section level2">
@@ -422,6 +421,19 @@ percentage of total reads kept after cleaning. These were looked at in
 excel and all samples less than 100k samples were discarded.</p>
 <p>Samples were separated into 2014 and 2021 for all future scripts - so
 most were run twice, once for 2014 &amp; 2021.</p>
+<p>Files:</p>
+<ul>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/radtags_2203-01.sbatch">radtag_0301</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/radtags_2203-02.sbatch">radtag_0302</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/radtags_2203-08.sbatch">radtag_0308</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/radtags_2209-01.sbatch">radtag_0901</a><br />
+</li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/radtags_2209-02.sbatch">radtag_0902</a><br />
+</li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/radtags_2210-01.sbatch">radtag_1001</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/radtags_2211-01.sbatch">radtag_1101</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/radtags_2211-02.sbatch">radtags_1102</a></li>
+</ul>
 </div>
 <div id="alignment-of-reads---integrated-method" class="section level2">
 <h2>Alignment of reads - Integrated method</h2>
@@ -435,8 +447,15 @@ main ‘reference’ on which to map an individual sequences. ‘Stacks’ of
 loci occur where multiple samples contain the same sequence. The number
 and depth of these stacks are controlled by parameters that are set-up
 during optimization.</p>
-<p>scripts for de novo - - <a href="https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sh">ecoli_index.sh</a>
-a The next step for an integrated alignment is to align the consensus
+<p>scripts for de novo:</p>
+<ul>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/ustacks_array_2.sh">ustacks_array_2014</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/ustacks_array_2021_2.sh">ustacks_array_2021</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/cstacks.sbatch">cstacks</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/sstacks.sbatch">sstacks</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/gstacks.sbatch">gstacks</a></li>
+</ul>
+<p>The next step for an integrated alignment is to align the consensus
 sequences to a reference genome. The genome doesn’t need to be from the
 same species, but the more closely related the better. Two closely
 related genomes were available. I chose to align to C.lectularius as
@@ -449,27 +468,60 @@ takes the coordinates from the BAM file and inserts them into the
 catalog.</p>
 <p>The final step is to use populations module to generate general
 statistics and output files for use in R. A genepop file was exported
-from Stacks. -link files here</p>
+from Stacks.</p>
+<p>scripts for integration:</p>
+<ul>
+<li><p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/bwamem.sbatch">bwa2bam</a></p></li>
+<li><p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/sstacks.sbatch">tsv2bam</a></p></li>
+<li><p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/integrate.sbatch">integrated-ailgnment</a></p></li>
+<li><p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/populations.sbatch">populations</a></p></li>
+</ul>
 </div>
 <div id="from-the-populations-in-stacks---it-generates-a-genepop-file" class="section level2">
 <h2>From the populations in stacks - it generates a genepop file</h2>
+<p>Genepop Files:</p>
+<ul>
+<li><p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/RequiredFiles/populations.snps14.genepop">2014
+genepop</a></p></li>
+<li><p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/RequiredFiles/populations.snps21.genepop">2021
+genepop</a></p></li>
+</ul>
 <p>Genepop files are a common file type for population statistics
 software such as Arelquin. However, I decided to work with Adgenet for
 generating population statistics as it is also frequenctly used in R but
-can also store population metadata.</p>
+can also store population metadata. The genind were used for general pop
+stats, but the hierfstat package in R was ultimately used to generate
+Fst.</p>
 <p>The population statistic, Fst, can be used as a measure of genetic
-distance. It was calculated with the – and confidence intervals with
-bootFst.</p>
+distance. It was calculated based on the Wier and Cockerham method.</p>
+<p>2014</p>
+<ul>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/pairwise.WCfstZ.txt">Fst</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/boot.fst.ul.txt">Fst_UpperLimit</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/boot.fst.ll.txt">Fst_LowerLimit</a></li>
+</ul>
+<p>2021</p>
+<ul>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/pairwise.WCfstZ.21.txt">Fst</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/boot.fst.ul21.txt">Fst_UpperLimit</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/boot.fst.ll21.txt">Fst_LowerLimit</a></li>
+</ul>
 <p>The geographic distance was calculated using coordinates for each
 colony location. The distance between each colony was calculated using
 Geosphere (distance based on WGS1984 geodesic).Then a pairwise distance
 matrix was calculated.</p>
+<p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/boot.fst.ll21.txt">geo_distance
+R script</a></p>
+<p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/FST_calculation.R">fst_calculation
+R script</a></p>
 </div>
 <div id="the-results" class="section level2">
 <h2>The Results</h2>
 <p>The Mantel test was non-significant w/a negative correlation
 coeffiecnt. Swallow bugs are not more genetically different with
 geographic distance between colonies.</p>
+<p><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/manteltest.R">mantel_test
+R script</a></p>
 </div>
 </div>
 
