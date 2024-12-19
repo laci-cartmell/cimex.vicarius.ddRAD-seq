@@ -9,47 +9,73 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##### Quick Note: This Repo is used in conjuctiong with a project for BIOL7263-03: Genome Biology. All necessary files to run the full script are included in the RequiredFiles; however, the sequence files are stored in a google drive due to space limmitations. Please contact me for access to the link. (P.S. Dr. Toomey, I should've emailed you it already). 
+##### Quick Note: This Repo is used in conjuctiong with a project for BIOL7263-03: Genome Biology. All necessary files to run the full script are included in the RequiredFiles; however, the sequence files are stored in a google drive due to space limitations. 
 
 
 ## Background
-This project generated single read sequences using ddRAD-seq on genomic dna from swallow bugs (Cimex vicarius). In order to detect potential isolation by distance.
-C. vicarius primarily parasitize cliff swallows which are highly colonial. 
-The goal for the class is to generate genetic distance and geographic distance between colonies in 2014 & 2021  My hypothesis that swallow bugs will not exhibit isolation by distance as the cliff swallows move frequently between colonies. However, a previous mitochondrial genetic study found that the genetic diversity of swallow bugs from cliff swallow colony sites were negatively associated with distance from ancestral cliffs (Moore, 2016)
+The goal for the class is to determine if IBD exist for swallow bugs. This project used single read sequences generated using ddRAD-seq on genomic dna from swallow bugs (Cimex vicarius).C. vicarius primarily parasitize cliff swallows which are highly colonial and move frequently between colonies.
+My hypothesis is that swallow bugs will not exhibit isolation by distance as the cliff swallows; however, a previous study using mtDNA found that the genetic diversity of swallow bugs from cliff swallow colony sites were negatively associated with distance from ancestral cliffs (Moore, 2016)
 
 
 ## Sequence Generation
-Ten swallow bugs were sequenced from 23 and 14 cliff swallow colonies from 2014 and 2021, respectively. 
-The raw sequencing files were generated with a double-digest restriction-associated sequencing (ddRAD-seq) library preparation based on Peterson et al. (2012). Single-read sequences were generated using Illumina HiSeq 4000. There are 8 raw sequence files that contains ~48 individuals per file. The files are stored on a google drive folder which may be accessed via email. 
+Ten swallow bugs were sequenced from 23 and 14 cliff swallow colonies from 2014 and 2021, respectively. The raw sequencing files were generated with a double-digest restriction-associated sequencing (ddRAD-seq) library preparation method based on Peterson et al. (2012). Single-read sequences were generated using Illumina HiSeq 4000. There are 8 raw sequence files that are stored on a google drive folder (email for access)
  
 
-## Post-sequencing Tasks 
+# Post-sequencing Tasks 
 - Quality control with FastQC and MultiQC
-- Trimming and Demultilexing - process_radtags
-- Alignment of reads - Integrated method with Stacks v2.65
+- Trimming and Demultilexing - process_radtags in Stacks
+- Alignment of reads - Integrated method with Stacks
 - Post-Alignment 
   - check alignment quality
-  - genepop --> Fst
-  - geographic distance
+  - calculate Fst & geographic distance
+
+## Quality Control w/FastQC & MultiQC
+Quality checks were done on the raw & demultiplexed files using FastQC. Visualizing hundreds of files can be daunting, which is where MultiQC comes in. It summarizes the statistics from FastQC in an easy to read format. If problem sequences exist, then can be identified and their FastQC files looked at more closely. The results contains summary figures using MultiQC
+
+Files:
+
+- fastQC.sbatch
+- fastQC.sh
+  - R1output
+  - R2output
+- [ecoli_index.sh](https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sh)
+- [ecoli_index.sbatch](https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sbatch)
+
+
+
+## Trimming and Demultiplexing
+The raw illumina files need to be demultiplexed so that each individual swallow bug will have its own .fq.gz file. 
+The module process_radtags in STACKS demultiplexes the files based on unique barcode sequences. It is also able to 'clean' reads. The reads must pass a phred quality score of 30 with a sliding window. 
+
+The process_radtags also generates values such as reads and percentage of total reads kept after cleaning. These were looked at in excel and all samples less than 100k samples were discarded. 
+
+Samples were separated into 2014 and 2021 for all future scripts - so most were run twice, once for 2014 & 2021.
+
+## Alignment of reads - Integrated method
+An integrated alignment is neat becuase it utilizes both de novo and reference alignments. The short-reads are first assembled into loci for each individual, then the loci matched to high quality samples are used to build a catalog that each sample is matched too. Further steps sorts by locus and phase SNPs into genotypes. However, this is the basis of the de novo assembly - the catalog of high quality samples act as the main 'reference' on which to map an individual sequences. 'Stacks' of loci occur where multiple samples contain the same sequence. The number and depth of these stacks are controlled by parameters that are set-up during optimization. 
+
+   scripts for de novo
+    - - [ecoli_index.sh](https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sh)
+a
+The next step for an integrated alignment is to align the consensus sequences to a reference genome. The genome doesn't need to be from the same species, but the more closely related the better. Two closely related genomes were available. I chose to align to C.lectularius as more of my sequences mappped to it than the available C. hempiterus genome. 
+
+I used BWA as my alignment tool to align the loci to the reference genome. Then used samtools to convert to a BAM file.
+
+
+I used another module from stacks - stacks-integrate-alignments. It takes the coordinates from the BAM file and inserts them into the catalog. 
+
+The final step is to use populations module to generate general statistics and output files for use in R.
+
 
 ## From the populations in stacks - it generates a genepop file 
 
-Genepop files are made up pf ---. and ---. It was first made to help with the massive amounts of data in the Humane Genome Project! So it is built to contain a lot of information in a succinct space. Another benefit is that it is a common enough file to have R Packages built to handle .genpop files. However, I decided to work with Adgenet for generating population statistics, and for that reason I converted Genepop to a genid object class
+A genepop file is exported from Stacks. Genepop files are a common file type for population statistics software such as Arelquin. However, I decided to work with Adgenet for generating population statistics as it is also frequenctly used in R but can also store population metadata. 
 
-## Details
+The population statistic, Fst, can be used as a measure of genetic distance. It was calculated with the -- and confidence intervals with bootFst. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The geographic distance was calculated using coordinates for each colony location. The distance between each colony was calculated using XX with WGS1984 geodesic distance.Then a pairwise distance matrix was calculated
 
-```{r cars}
-summary(cars)
-```
+## The Results
 
-## Including Plots
+The Mantel test was non-significant w/a negative correlation coeffiecnt. Swallow bugs are not more genetically different with geographic distance between colonies.
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
