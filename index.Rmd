@@ -66,6 +66,8 @@ scripts for de novo:
   - [ustacks_array_2021](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/ustacks_array_2021_2.sh)
   - [cstacks](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/cstacks.sbatch)
   - [sstacks](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/sstacks.sbatch)
+  - [bwa2bam](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/bwamem.sbatch)
+  - [tsv2bam](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/sstacks.sbatch)
   - [gstacks](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/gstacks.sbatch)
 
 The next step for an integrated alignment is to align the consensus sequences to a reference genome. The genome doesn't need to be from the same species, but the more closely related the better. Two closely related genomes were available. I chose to align to C.lectularius as more of my sequences mappped to it than the available C. hempiterus genome. 
@@ -79,9 +81,6 @@ The final step is to use populations module to generate general statistics and o
 
 scripts for integration:
 
-  - [bwa2bam](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/bwamem.sbatch)
-    
-  - [tsv2bam](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/sstacks.sbatch)
     
   - [integrated-ailgnment](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/integrate.sbatch)
     
