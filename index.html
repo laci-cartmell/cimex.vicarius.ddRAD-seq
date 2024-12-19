@@ -356,11 +356,9 @@ display: none;
 </div>
 
 
-<div id="quick-note-this-repo-is-used-in-conjuctiong-with-a-project-for-biol7263-03-genome-biology.-all-necessary-files-to-run-the-full-script-are-included-in-the-requiredfiles-however-the-sequence-files-are-stored-in-a-google-drive-due-to-space-limitations." class="section level5">
+<div id="quick-note-this-repo-is-used-in-conjuctiong-with-a-project-for-biol7263-03-genome-biology" class="section level5">
 <h5>Quick Note: This Repo is used in conjuctiong with a project for
-BIOL7263-03: Genome Biology. All necessary files to run the full script
-are included in the RequiredFiles; however, the sequence files are
-stored in a google drive due to space limitations.</h5>
+BIOL7263-03: Genome Biology</h5>
 </div>
 <div id="background" class="section level2">
 <h2>Background</h2>
@@ -403,26 +401,22 @@ FastQC. Visualizing hundreds of files can be daunting, which is where
 MultiQC comes in. It summarizes the statistics from FastQC in an easy to
 read format. If problem sequences exist, then can be identified and
 their FastQC files looked at more closely. The results contains summary
-figures using MultiQC</p>
+figures using MultiQC on the browswer.</p>
 <p>Files:</p>
 <ul>
-<li>fastQC.sbatch</li>
-<li>fastQC.sh
-<ul>
-<li>R1output</li>
-<li>R2output</li>
-</ul></li>
-<li><a href="https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sh">ecoli_index.sh</a></li>
-<li><a href="https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sbatch">ecoli_index.sbatch</a></li>
+<li><a href="https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/tree/main/fastqc">fastqc
+output files</a></li>
+<li><a href="https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sh">fastqc.sh</a></li>
 </ul>
 </div>
 <div id="trimming-and-demultiplexing" class="section level2">
 <h2>Trimming and Demultiplexing</h2>
-<p>The raw illumina files need to be demultiplexed so that each
+<p>The raw Illumina files need to be demultiplexed so that each
 individual swallow bug will have its own .fq.gz file. The module
 process_radtags in STACKS demultiplexes the files based on unique
-barcode sequences. It is also able to ‘clean’ reads. The reads must pass
-a phred quality score of 30 with a sliding window.</p>
+barcode sequences. The barcodes are in the required file directory. It
+is also able to ‘clean’ reads. The reads must pass a phred quality score
+of 30 with a sliding window.</p>
 <p>The process_radtags also generates values such as reads and
 percentage of total reads kept after cleaning. These were looked at in
 excel and all samples less than 100k samples were discarded.</p>
@@ -454,22 +448,22 @@ genome. Then used samtools to convert to a BAM file.</p>
 takes the coordinates from the BAM file and inserts them into the
 catalog.</p>
 <p>The final step is to use populations module to generate general
-statistics and output files for use in R.</p>
+statistics and output files for use in R. A genepop file was exported
+from Stacks. -link files here</p>
 </div>
 <div id="from-the-populations-in-stacks---it-generates-a-genepop-file" class="section level2">
 <h2>From the populations in stacks - it generates a genepop file</h2>
-<p>A genepop file is exported from Stacks. Genepop files are a common
-file type for population statistics software such as Arelquin. However,
-I decided to work with Adgenet for generating population statistics as
-it is also frequenctly used in R but can also store population
-metadata.</p>
+<p>Genepop files are a common file type for population statistics
+software such as Arelquin. However, I decided to work with Adgenet for
+generating population statistics as it is also frequenctly used in R but
+can also store population metadata.</p>
 <p>The population statistic, Fst, can be used as a measure of genetic
 distance. It was calculated with the – and confidence intervals with
 bootFst.</p>
 <p>The geographic distance was calculated using coordinates for each
 colony location. The distance between each colony was calculated using
-XX with WGS1984 geodesic distance.Then a pairwise distance matrix was
-calculated</p>
+Geosphere (distance based on WGS1984 geodesic).Then a pairwise distance
+matrix was calculated.</p>
 </div>
 <div id="the-results" class="section level2">
 <h2>The Results</h2>

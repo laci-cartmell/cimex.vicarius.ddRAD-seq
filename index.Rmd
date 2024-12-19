@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##### Quick Note: This Repo is used in conjuctiong with a project for BIOL7263-03: Genome Biology. All necessary files to run the full script are included in the RequiredFiles; however, the sequence files are stored in a google drive due to space limitations. 
+##### Quick Note: This Repo is used in conjuctiong with a project for BIOL7263-03: Genome Biology
 
 
 ## Background
@@ -30,22 +30,19 @@ Ten swallow bugs were sequenced from 23 and 14 cliff swallow colonies from 2014 
   - calculate Fst & geographic distance
 
 ## Quality Control w/FastQC & MultiQC
-Quality checks were done on the raw & demultiplexed files using FastQC. Visualizing hundreds of files can be daunting, which is where MultiQC comes in. It summarizes the statistics from FastQC in an easy to read format. If problem sequences exist, then can be identified and their FastQC files looked at more closely. The results contains summary figures using MultiQC
+Quality checks were done on the raw & demultiplexed files using FastQC. Visualizing hundreds of files can be daunting, which is where MultiQC comes in. It summarizes the statistics from FastQC in an easy to read format. If problem sequences exist, then can be identified and their FastQC files looked at more closely. The results contains summary figures using MultiQC on the browswer. 
 
 Files:
 
-- fastQC.sbatch
-- fastQC.sh
-  - R1output
-  - R2output
-- [ecoli_index.sh](https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sh)
-- [ecoli_index.sbatch](https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sbatch)
+  - [fastqc output files](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/tree/main/fastqc)
+- [fastqc.sh](https://github.com/laci-cartmell/BIOL726303/blob/main/scripts/BWA/ecoli_index.sh)
+
 
 
 
 ## Trimming and Demultiplexing
-The raw illumina files need to be demultiplexed so that each individual swallow bug will have its own .fq.gz file. 
-The module process_radtags in STACKS demultiplexes the files based on unique barcode sequences. It is also able to 'clean' reads. The reads must pass a phred quality score of 30 with a sliding window. 
+The raw Illumina files need to be demultiplexed so that each individual swallow bug will have its own .fq.gz file. 
+The module process_radtags in STACKS demultiplexes the files based on unique barcode sequences. The barcodes are in the required file directory. It is also able to 'clean' reads. The reads must pass a phred quality score of 30 with a sliding window. 
 
 The process_radtags also generates values such as reads and percentage of total reads kept after cleaning. These were looked at in excel and all samples less than 100k samples were discarded. 
 
@@ -64,16 +61,17 @@ I used BWA as my alignment tool to align the loci to the reference genome. Then 
 
 I used another module from stacks - stacks-integrate-alignments. It takes the coordinates from the BAM file and inserts them into the catalog. 
 
-The final step is to use populations module to generate general statistics and output files for use in R.
+The final step is to use populations module to generate general statistics and output files for use in R. A genepop file was exported from Stacks.
+-link files here
 
 
 ## From the populations in stacks - it generates a genepop file 
 
-A genepop file is exported from Stacks. Genepop files are a common file type for population statistics software such as Arelquin. However, I decided to work with Adgenet for generating population statistics as it is also frequenctly used in R but can also store population metadata. 
+Genepop files are a common file type for population statistics software such as Arelquin. However, I decided to work with Adgenet for generating population statistics as it is also frequenctly used in R but can also store population metadata. 
 
 The population statistic, Fst, can be used as a measure of genetic distance. It was calculated with the -- and confidence intervals with bootFst. 
 
-The geographic distance was calculated using coordinates for each colony location. The distance between each colony was calculated using XX with WGS1984 geodesic distance.Then a pairwise distance matrix was calculated
+The geographic distance was calculated using coordinates for each colony location. The distance between each colony was calculated using Geosphere (distance based on WGS1984 geodesic).Then a pairwise distance matrix was calculated.
 
 ## The Results
 
