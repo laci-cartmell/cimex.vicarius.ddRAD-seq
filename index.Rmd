@@ -128,14 +128,15 @@ The geographic distance was calculated using coordinates for each colony locatio
 ## The Results
 
 The pairwise Fst were low, and most were not significantly different from other colones. 
-INSERT FIGURE OF 2021 AND 2014 Pairwise
+
+![FST_2014](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/pairwisefst_2014.pdf)
+![FST_2021](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/pfst2_21.pdf)
 
 The mantel tests were non-significant for 2014 and 2021. The Mantel r-value was 0.0656 for 2014 and -0.0159 for 2021. 
 
 ![IBD_2014](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/ibd_2014.svg)
+![IBD_2021](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/IBD_2021.png)
 
-FIGURE14
-FIGURE21
 
 Script: 
 [mantel_test R script](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/manteltest.R)
