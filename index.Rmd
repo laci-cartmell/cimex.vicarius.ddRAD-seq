@@ -72,8 +72,11 @@ scripts for de novo:
 
 The next step for an integrated alignment is to align the consensus sequences to a reference genome. The genome doesn't need to be from the same species, but the more closely related the better. Two closely related genomes were available. I chose to align to C.lectularius as more of my sequences mappped to it than the available C. hempiterus genome. 
 
-I used BWA as my alignment tool to align the loci to the reference genome. Then used samtools to convert to a BAM file.
+I used BWA as my alignment tool to align the loci to the reference genome. Then used samtools to convert to a BAM file. At this time, I also generated summary statistics with flagstat
 
+   - [map_stats_2014](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/mappingstats14.txt)
+   
+   - [map_stats_2021](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/mappingstats21.txt)
 
 I used another module from stacks - stacks-integrate-alignments. It takes the coordinates from the BAM file and inserts them into the catalog. 
 
@@ -124,6 +127,20 @@ The geographic distance was calculated using coordinates for each colony locatio
 
 ## The Results
 
-The Mantel test was non-significant w/a negative correlation coeffiecnt. Swallow bugs are not more genetically different with geographic distance between colonies.
+The pairwise Fst were low, and most were not significantly different from other colones. 
+INSERT FIGURE OF 2021 AND 2014 Pairwise
 
+The mantel tests were non-significant for 2014 and 2021. The Mantel r-value was 0.0656 for 2014 and -0.0159 for 2021. 
+
+![IBD_2014](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/ibd_2014.svg)
+
+FIGURE14
+FIGURE21
+
+Script: 
 [mantel_test R script](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/manteltest.R)
+
+## Conclusion
+
+Swallow bugs are not more genetically different with geographic distance between colonies.
+
