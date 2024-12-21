@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 The goal for the class is to determine if IBD exist for swallow bugs. This project used single read sequences generated using ddRAD-seq on genomic dna from swallow bugs (Cimex vicarius).C. vicarius primarily parasitize cliff swallows which are highly colonial and move frequently between colonies.
 My hypothesis is that swallow bugs will not exhibit isolation by distance as the cliff swallows; however, a previous study using mtDNA found that the genetic diversity of swallow bugs from cliff swallow colony sites were negatively associated with distance from ancestral cliffs (Moore, 2016)
 
+Could you spell out IBD in the intro
 
 ## Sequence Generation
 Ten swallow bugs were sequenced from 23 and 14 cliff swallow colonies from 2014 and 2021, respectively. The raw sequencing files were generated with a double-digest restriction-associated sequencing (ddRAD-seq) library preparation method based on Peterson et al. (2012). Single-read sequences were generated using Illumina HiSeq 4000. There are 8 raw sequence files that are stored on a google drive folder (email for access)
@@ -125,23 +126,42 @@ The geographic distance was calculated using coordinates for each colony locatio
   [fst_calculation R script](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/FST_calculation.R)
 
 
+
+The pairwise matrices were then used for calculating the Mantel statistics using the package Vegan.
+
+Script: 
+[mantel_test R script](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/manteltest.R)
+
+
 ## The Results
 
 The pairwise Fst were low, and most were not significantly different from other colones. 
 
-![FST_2014](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/pairwisefst_2014.pdf)
-![FST_2021](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/pfst2_21.pdf)
+![FST_2014](/Users/Owner/Documents//GitHub/cimex.vicarius.ddRAD-seq/Output_R/fst_14.jpeg)
+Pairwise Heatmap of Fst for all sampled colonies in 2014
+
+
+![FST_2021](/Users/Owner/Documents/GitHub/cimex.vicarius.ddRAD-seq/Output_R/fst_21.jpeg)
+Pairwise Heatmap of Fst for all sampled colonies in 2021
+
+________________________________________________________________________________
+
+
+
 
 The mantel tests were non-significant for 2014 and 2021. The Mantel r-value was 0.0656 for 2014 and -0.0159 for 2021. 
 
-![IBD_2014](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/ibd_2014.svg)
-![IBD_2021](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/Output_R/IBD_2021.png)
+![The genetic distance (Fst) against Geographic distance for 2014. The regression line is in red.](/Users/Owner/Documents/GitHub/cimex.vicarius.ddRAD-seq/Output_R/ibd_2014.svg)
 
+ 
 
-Script: 
-[mantel_test R script](https://github.com/laci-cartmell/cimex.vicarius.ddRAD-seq/blob/main/scripts/manteltest.R)
+![The genetic distance (Fst) against Geographic distance for 2014. The regression line is in red.](/Users/Owner/Documents//GitHub/cimex.vicarius.ddRAD-seq/Output_R/ibd_2021.svg)
+
+ 
+
 
 ## Conclusion
 
 Swallow bugs are not more genetically different with geographic distance between colonies.
 
+A brief conclusion. Is your result expected or surprising? Why? 
