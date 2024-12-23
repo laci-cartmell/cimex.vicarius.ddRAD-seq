@@ -12,10 +12,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Background
-The goal for the class is to determine if IBD exist for swallow bugs. This project used single read sequences generated using ddRAD-seq on genomic dna from swallow bugs (Cimex vicarius).C. vicarius primarily parasitize cliff swallows which are highly colonial and move frequently between colonies.
-My hypothesis is that swallow bugs will not exhibit isolation by distance as the cliff swallows; however, a previous study using mtDNA found that the genetic diversity of swallow bugs from cliff swallow colony sites were negatively associated with distance from ancestral cliffs (Moore, 2016)
+Swallow bugs, C. vicarius, primarily parasitize cliff swallows which are highly colonial, migratory birds. They rely on their host to passively disperse between colonies as swallow bugs lack wings and colonies are seperated by 1-10km. Cliff swallows move frequently between colonies, especially at the beginning and end of the breeding season. Also at this time, swallow bugs engage in a dispersal behavior by clustering at the edges of the nests and jumping to visting birds.
+Previous work on swallow bugs using mtDNA and microsatellites found that the genetic diversity of swallow bugs were negatively associated with distance from ancestral cliffs (Moore, 2016). The negative association found is likely due to the expansion of cliff swallows eastward with the increase in anthroprogenic structures. However, it's unclear how frequently swallow bugs disperse between colonies and if distance could be a limiting factor. 
 
-Could you spell out IBD in the intro
+One way to measure dispersal is the degree of genetic similarity between colonies.Fst can be used as a measure of genetic differentiation, or isolation. More similarity means more gene flow, or more dispersal. Longer distances may reduce the likelihood of successful dispersal. If this is the case, then there should be less gene flow between colonies that are farther away. The cliff swallow colonies are separated by 1-10km within the study area.
+
+Isolation by distance is a method to analyze if the genetic differences between the colonies  increase with geographic distance. 
+
+The goal for the class project is to determine if isolation by distance (IBD) exist for swallow bugs. 
+My hypothesis is that swallow bugs will not exhibit isolation by distance as the cliff swallows move frequently between colonies.
+
 
 ## Sequence Generation
 Ten swallow bugs were sequenced from 23 and 14 cliff swallow colonies from 2014 and 2021, respectively. The raw sequencing files were generated with a double-digest restriction-associated sequencing (ddRAD-seq) library preparation method based on Peterson et al. (2012). Single-read sequences were generated using Illumina HiSeq 4000. There are 8 raw sequence files that are stored on a google drive folder (email for access)
@@ -162,6 +168,8 @@ The mantel tests were non-significant for 2014 and 2021. The Mantel r-value was 
 
 ## Conclusion
 
-Swallow bugs are not more genetically different with geographic distance between colonies.
+The small Fst values indicate that swallow bugs have high gene flow between cliff swallow colonies. The lack of strong differences between the swallow bugs indicate a panmictic population with frequent dispersal. 
 
-A brief conclusion. Is your result expected or surprising? Why? 
+There was no significant correlation between genetic isolation and geographic distance for either 2014 or 2021 group. High dispersal may be one reason why no IBD was clear. 
+
+Swallow bugs disperse between colonies with no effect of distance which was expected as a large number of cliff swallows visit multiple colonies at the ends of the breeding season. The dispersal behavior of the bugs allow them to effectively passively disperse. 
