@@ -12,15 +12,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Background
-Swallow bugs, C. vicarius, primarily parasitize cliff swallows which are highly colonial, migratory birds. They rely on their host to passively disperse between colonies as swallow bugs lack wings and colonies are seperated by 1-10km. Cliff swallows move frequently between colonies, especially at the beginning and end of the breeding season. Also at this time, swallow bugs engage in a dispersal behavior by clustering at the edges of the nests and jumping to visting birds.
-Previous work on swallow bugs using mtDNA and microsatellites found that the genetic diversity of swallow bugs were negatively associated with distance from ancestral cliffs (Moore, 2016). The negative association found is likely due to the expansion of cliff swallows eastward with the increase in anthroprogenic structures. However, it's unclear how frequently swallow bugs disperse between colonies and if distance could be a limiting factor. 
+The swallow bug, C. vicarius, primarily parasitize cliff swallows which are colonial and migratory birds. Swallow bugs rely on these birds for passive dispersal between colonies, as they lack wings and colonies are typically separated by distances ranging from 1 to 10 km. Cliff swallows  frequently move between colonies, especially during the beginning and end of the breeding season. During this time, swallow bugs engage in a dispersal behavior by clustering at the edge of the nests and jumping onto visting birds.
 
-One way to measure dispersal is the degree of genetic similarity between colonies.Fst can be used as a measure of genetic differentiation, or isolation. More similarity means more gene flow, or more dispersal. Longer distances may reduce the likelihood of successful dispersal. If this is the case, then there should be less gene flow between colonies that are farther away. The cliff swallow colonies are separated by 1-10km within the study area.
+Previous research using mtDNA and microsatellites has shown that the genetic diversity of swallow bugs is negatively correlated with distance from ancestral cliffs (Moore, 2016). The negative association found is likely due to the expansion of cliff swallows eastward, facilitated by the increase in anthropogenic structures. However, it's unclear how frequently swallow bugs disperse between colonies and whether geographic distance could be a limiting factor. 
 
-Isolation by distance is a method to analyze if the genetic differences between the colonies  increase with geographic distance. 
+One method for measuring dispersal is to examine the genetic similarity between colonies. Fst, a measure of genetic differentiation, can indicate levels of isolation; greater genetic similarity suggests more gene flow, or dispersal. Longer distances may reduce the likelihood of successful dispersal, and therefore, there should be less gene flow between colonies that are farther apart.
 
-The goal for the class project is to determine if isolation by distance (IBD) exist for swallow bugs. 
-My hypothesis is that swallow bugs will not exhibit isolation by distance as the cliff swallows move frequently between colonies.
+Isolation by distance (IBD) is a method to analyze if the genetic differences between the colonies increase with geographic distance. 
+
+For this project, the goal is to test whether isolation by distance exists for swallow bugs. My hypothesis is that swallow bugs will not exhibit isolation by distance, as the frequent movement of cliff swallows between colonies likely facilitates gene flow and dispersal
 
 
 ## Sequence Generation
@@ -141,7 +141,7 @@ Script:
 
 ## The Results
 
-The pairwise Fst were low, and most were not significantly different from other colones. 
+The pairwise Fst were low, and most were not significantly different from other colonies. 
 
 ![FST_2014](/Users/Owner/Documents//GitHub/cimex.vicarius.ddRAD-seq/Output_R/fst_14.jpeg)
 Pairwise Heatmap of Fst for all sampled colonies in 2014
@@ -168,8 +168,7 @@ The mantel tests were non-significant for 2014 and 2021. The Mantel r-value was 
 
 ## Conclusion
 
-The small Fst values indicate that swallow bugs have high gene flow between cliff swallow colonies. The lack of strong differences between the swallow bugs indicate a panmictic population with frequent dispersal. 
+The small pairwise Fst values indicate that swallow bugs have high gene flow between cliff swallow colonies. This lack of strong genetic differentiation suggest that the population is panmictic with frequent dispersal. There was no significant correlation between genetic isolation and geographic distance for either 2014 or 2021 groups. 
+This lack of isolation by distance (IBD) supports the hypothesis that frequent dispersal, facilitated by cliff swallows' movements between colonies, plays a key role in maintaining gene flow.
 
-There was no significant correlation between genetic isolation and geographic distance for either 2014 or 2021 group. High dispersal may be one reason why no IBD was clear. 
-
-Swallow bugs disperse between colonies with no effect of distance which was expected as a large number of cliff swallows visit multiple colonies at the ends of the breeding season. The dispersal behavior of the bugs allow them to effectively passively disperse. 
+Swallow bugs appear to disperse between colonies with no effect by distance, which aligns with the expectation that the movement of cliff swallows-especially during the ends of the breeding season-promotes passive dispersal. The dispersal behavior of the swallow bugs enables them to effectively move between colonies, further explaining the absence of IBD.
